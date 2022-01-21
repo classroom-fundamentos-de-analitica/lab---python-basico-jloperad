@@ -29,7 +29,7 @@ def pregunta_01():
     suma= 0
     for row in csv.reader(csvfile, delimiter='\t'):
         suma += int(row[1])
-    print(suma)
+    return(suma)
 
 def pregunta_02():
     """
