@@ -12,6 +12,10 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 
 """
 
+import csv
+from collections import Counter
+
+csvfile= open("data.csv","r") 
 
 def pregunta_01():
     """
@@ -21,8 +25,11 @@ def pregunta_01():
     214
 
     """
-    return
 
+    suma= 0
+    for row in csv.reader(csvfile, delimiter='\t'):
+        suma += int(row[1])
+    print(suma)
 
 def pregunta_02():
     """
@@ -39,7 +46,13 @@ def pregunta_02():
     ]
 
     """
-    return
+    resultado=Counter()
+    for row in csv.reader(csvfile, delimiter='\t'):
+        resultado[row[0]]+=1
+        
+    resultado=sorted(resultado.items())
+
+    return resultado
 
 
 def pregunta_03():
