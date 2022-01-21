@@ -14,8 +14,9 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 
 import csv
 from collections import Counter
-
+from datetime import datetime
 csvfile= open("data.csv","r") 
+
 
 def pregunta_01():
     """
@@ -70,9 +71,15 @@ def pregunta_03():
     ]
 
     """
-    return
+    resultado3=Counter()
+    for row in csv.reader(csvfile, delimiter='\t'):
+        resultado3[row[0]]+=int(row[1])
+        
+    resultado3=sorted(resultado3.items())
 
+    return resultado3
 
+    
 def pregunta_04():
     """
     La columna 3 contiene una fecha en formato `YYYY-MM-DD`. Retorne la cantidad de
@@ -95,7 +102,15 @@ def pregunta_04():
     ]
 
     """
-    return
+    resultado4=Counter()
+    for row in csv.reader(csvfile, delimiter='\t'):
+        date= datetime.strptime(row[2],"%Y-%m-%S")
+        
+        resultado4[str(date.month).zfill(2)]+=1
+        
+    resultado4=sorted(resultado4.items())
+
+    return resultado4
 
 
 def pregunta_05():
@@ -113,6 +128,7 @@ def pregunta_05():
     ]
 
     """
+    
     return
 
 
