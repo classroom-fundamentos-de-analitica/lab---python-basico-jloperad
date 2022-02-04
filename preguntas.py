@@ -17,7 +17,6 @@ from collections import Counter
 from datetime import datetime
 csvfile= open("data.csv","r") 
 
-
 def pregunta_01():
     """
     Retorne la suma de la segunda columna.
@@ -128,9 +127,21 @@ def pregunta_05():
     ]
 
     """
+def pregunta_05():
+    with open('data.csv') as file:
+        data = file.readlines()
+        data = [(x.strip().split('\t')[0:2]) for x in data]
+        letras = sorted((list(set([x[0] for x in data]))))
+        res = list()
+        for i in letras:
+            valores = list()
+            for j in data:
+                if j[0] == i:
+                    valores.append(int(j[1]))
+            res.append((i, max(valores), min(valores)))
+    return res
     
-    return
-
+    
 
 def pregunta_06():
     """
@@ -154,7 +165,21 @@ def pregunta_06():
     ]
 
     """
-    return
+    with open('data.csv') as file:
+        data = file.readlines()
+        data = [x.strip().split('\t')[-1] for x in data]
+        data = ','.join(data).split(',')
+        data = [x.split(':') for x in data]
+        strings = sorted(list(set([x[0] for x in data])))
+        res = list()
+        for i in strings:
+            valores = list()
+            for j in data:
+                if j[0] == i:
+                    valores.append(int(j[1]))
+            res.append((i, min(valores), max(valores)))
+    return res
+        
 
 
 def pregunta_07():
@@ -261,7 +286,7 @@ def pregunta_11():
         "b": 49,
         "c": 91,
         "d": 73,
-        "e": 86,
+        "j": 86,
         "f": 134,
         "g": 35,
     }
