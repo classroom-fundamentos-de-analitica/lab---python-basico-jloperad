@@ -104,7 +104,7 @@ def pregunta_04():
     """
     resultado4=Counter()
     for row in csv.reader(csvfile, delimiter='\t'):
-        date= datetime.strptime(row[2],"%Y-%i-%S")
+        date= datetime.strptime(row[2],"%Y-%m-%S")
         
         resultado4[str(date.month).zfill(2)]+=1
         
@@ -392,7 +392,7 @@ def pregunta_12():
         
         data = file.readlines()
         data = [x.strip().split('\t') for x in data]
-        lista = list()
+        listaux = list()
         
         for i in data:
             for j in range(3):
@@ -403,10 +403,10 @@ def pregunta_12():
         
         for j in valores:
             lista = sum([int(x.split(':').pop(1)) for x in j])
-            lista.append(lista)
+            listaux.append(lista)
             
         for k in range(len(data)):
-            data[k].append(lista[k])
+            data[k].append(listaux[k])
             data[k].pop(1)
             
         l = [x[0] for x in data]
